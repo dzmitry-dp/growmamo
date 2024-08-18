@@ -6,7 +6,7 @@ import machine
 from web import ports, create_sockets, web_data, handle_post_request
 
 
-def start(mamo_ssid, login, password):
+def start(mamo_ssid, login, password, pin_D1, pin_D2):
     sockets = create_sockets(mamo_ssid = mamo_ssid)
 
     try:
@@ -50,6 +50,19 @@ def start(mamo_ssid, login, password):
                                             with open('wifi_login', "w") as file:
                                                 ujson.dump(post_data, file)
                                             machine.reset() # Перезагрузка устройства если небыло login и пароля в файле
+
+                                        if 'socket_1' in post_data.keys():
+                                            if post_data['socket_1'] == 'on':
+                                                pin_D1(1) # выставляем логическую 1
+                                            elif post_data['socket_1'] == 'off':
+                                                pin_D1(0) # выставляем логический 0
+                                        
+                                        if 'socket_2' in post_data.keys():
+                                            if post_data['socket_2'] == 'on':
+                                                pin_D2(1) # выставляем логическую 1
+                                            elif post_data['socket_2'] == 'off':
+                                                pin_D2(0) # выставляем логический 0
+                                        
                                 except KeyError:
                                     pass # нет данных о wifi_login в POST сообщении клиента
                             else: # если в файле записан login и password

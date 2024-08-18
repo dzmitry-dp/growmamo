@@ -1,4 +1,4 @@
-#############################################################
+############################################################
 ### Проверка на наличие сохраненного пароля от домашнего wifi
 from memory import read_file, ujson
 
@@ -49,6 +49,10 @@ pin_b = machine.Pin(12, machine.Pin.OUT, value = 0) # информационны
 pin_c = machine.Pin(13, machine.Pin.OUT, value = 0) # информационный pin
 pin_d = machine.Pin(15, machine.Pin.OUT, value = 0) # pin управления
 
+# Настройка PIN для управления розетками
+pin_D1 = machine.Pin(5, machine.Pin.OUT, value = 1) # socket_1
+pin_D2 = machine.Pin(4, machine.Pin.OUT, value = 1) # socket_2
+
 # pin_d(1) # включил запись в регистр
 # pin_a(1) # выставил 1 на пине D5
 # pin_b(1) # выставил 1 на пине D6
@@ -59,4 +63,4 @@ pin_d = machine.Pin(15, machine.Pin.OUT, value = 0) # pin управления
 ### Настраиваем сокеты для работы с точкой доступа for_MAMO_app
 import access_point
 
-access_point.start(mamo_ssid, login, password) # mamo_ssid - объект управления точкой доступа, login - ssid точки доступа домашнего wifi, password - пароль от домашнего wifi
+access_point.start(mamo_ssid, login, password, pin_D1, pin_D2) # mamo_ssid - объект управления точкой доступа, login - ssid точки доступа домашнего wifi, password - пароль от домашнего wifi
