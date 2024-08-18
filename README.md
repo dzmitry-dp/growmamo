@@ -4,8 +4,7 @@ ___
 The GrowMAMO team develops products for plant cultivation.
 
 <div>
-	<img src="./static/image.png" width="400" height="840" style="margin-right: 10px; display: inline-block;">
+	<img src="./static/image.png">
 </div>
 
-PowerBox is an uninterruptible power supply that you can control from your smartphone.
-
+PowerBox is an uninterruptible power supply that you can control from your smartphone
